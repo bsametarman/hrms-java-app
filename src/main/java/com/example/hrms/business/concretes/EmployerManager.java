@@ -1,6 +1,7 @@
 package com.example.hrms.business.concretes;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,11 @@ public class EmployerManager implements EmployerService{
 	@Override
 	public List<Employer> getAll() {
 		return employerDao.findAll();
+	}
+
+	@Override
+	public Optional<Employer> getById(int employer_id) {
+		return employerDao.findById(employer_id);
 	}
 	
 }

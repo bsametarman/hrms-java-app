@@ -1,6 +1,7 @@
 package com.example.hrms.business.concretes;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,11 @@ public class JobSeekerManager implements JobSeekerService{
 	@Override
 	public void addJobSeeker() {
 		//jobSeekerDao.save();
+	}
+
+	@Override
+	public Optional<JobSeeker> getById(int job_seeker_id) {
+		return jobSeekerDao.findById(job_seeker_id);
 	}
 
 }
