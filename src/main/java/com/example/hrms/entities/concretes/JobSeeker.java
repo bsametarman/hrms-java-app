@@ -1,7 +1,5 @@
 package com.example.hrms.entities.concretes;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +27,7 @@ public class JobSeeker implements IEntity{
 	private String identityNumber;
 	
 	@Column(name="birth_date")
-	private Date birthDate;
+	private String birthDate;
 	
 	@Column(name="address")
 	private String address;
@@ -39,7 +37,7 @@ public class JobSeeker implements IEntity{
 		
 	}
 	
-	public JobSeeker(int jobSeekerId, String name, String lastName, String identityNumber, Date birthDate,
+	public JobSeeker(int jobSeekerId, String name, String lastName, String identityNumber, String birthDate,
 			String email, String password, String passwordRepeat, String address) {
 		super();
 		this.jobSeekerId = jobSeekerId;
@@ -82,11 +80,11 @@ public class JobSeeker implements IEntity{
 		this.identityNumber = identityNumber;
 	}
 
-	public Date getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 

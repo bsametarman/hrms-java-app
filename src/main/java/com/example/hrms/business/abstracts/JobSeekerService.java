@@ -8,5 +8,5 @@ import com.example.hrms.entities.concretes.JobSeeker;
 public interface JobSeekerService {
 	List<JobSeeker> getAll();
 	Optional<JobSeeker> getById(int job_seeker_id);
-	void addJobSeeker();
+	void signUp(JobSeeker jobSeeker);
 }

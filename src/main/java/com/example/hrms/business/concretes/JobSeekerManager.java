@@ -25,15 +25,24 @@ public class JobSeekerManager implements JobSeekerService{
 	public List<JobSeeker> getAll() {
 		return jobSeekerDao.findAll();
 	}
-	
-	@Override
-	public void addJobSeeker() {
-		//jobSeekerDao.save();
-	}
 
 	@Override
 	public Optional<JobSeeker> getById(int job_seeker_id) {
 		return jobSeekerDao.findById(job_seeker_id);
+	}
+
+	@Override
+	public void signUp(JobSeeker jobSeeker) {
+		JobSeeker jobSeekerCreate = new JobSeeker();
+		jobSeekerCreate.setJobSeekerId(jobSeeker.getJobSeekerId());
+		jobSeekerCreate.setName(jobSeeker.getName());
+		jobSeekerCreate.setLastName(jobSeeker.getLastName());
+		jobSeekerCreate.setIdentityNumber(jobSeeker.getIdentityNumber());
+		jobSeekerCreate.setBirthDate(jobSeeker.getBirthDate());
+		jobSeekerCreate.setAddress(jobSeeker.getAddress());
+	
+		jobSeekerDao.saveAndFlush(jobSeekerCreate);
+		
 	}
 
 }
