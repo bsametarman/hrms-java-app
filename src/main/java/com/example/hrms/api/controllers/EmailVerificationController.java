@@ -20,7 +20,7 @@ public class EmailVerificationController {
 		this.emailVerificationService = emailVerificationService;
 	}
 	
-	@PostMapping("/validate")
+	@PostMapping("/emailvalidate")
 	public void validate(@RequestBody EmailVerification emailVerification) {
 		emailVerificationService.validate(emailVerification);
 	}
