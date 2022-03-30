@@ -1,4 +1,4 @@
-package com.example.hrms.core.concretes;
+package com.example.hrms.core.mernisVerification.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.hrms.core.abstracts.SystemVerificationService;
-import com.example.hrms.core.concretes.SystemVerification;
+import com.example.hrms.core.systemVerification.abstracts.SystemVerificationService;
+import com.example.hrms.core.systemVerification.entities.SystemVerification;
+import com.example.hrms.core.utilities.results.Result;
+
 
 @RestController
 @RequestMapping("/api")
@@ -21,7 +23,7 @@ public class SystemVerificationController {
 	}
 	
 	@PostMapping("/systemverification")
-	public void validate(@RequestBody SystemVerification systemVerification) {
-		systemVerificationService.verificate(systemVerification);
+	public Result validate(@RequestBody SystemVerification systemVerification) {
+		return systemVerificationService.verificate(systemVerification);
 	}
 }

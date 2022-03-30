@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.hrms.core.abstracts.MernisVerificationService;
-import com.example.hrms.core.concretes.MernisVerification;
+import com.example.hrms.core.mernisVerification.abstracts.MernisVerificationService;
+import com.example.hrms.core.mernisVerification.entities.MernisVerification;
+import com.example.hrms.core.utilities.results.Result;
+
 
 @RestController
 @RequestMapping("/api")
@@ -22,7 +24,7 @@ public class MernisVerificationController {
 	}
 	
 	@PostMapping("/mernisvalidate")
-	public void validate(@RequestBody MernisVerification mernisVerification) {
-		mernisVerificationService.validate(mernisVerification);
+	public Result validate(@RequestBody MernisVerification mernisVerification) {
+		return mernisVerificationService.validate(mernisVerification);
 	}
 }

@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.hrms.core.abstracts.EmailVerificationService;
-import com.example.hrms.core.concretes.EmailVerification;
+import com.example.hrms.core.emailVerification.abstracts.EmailVerificationService;
+import com.example.hrms.core.emailVerification.entities.EmailVerification;
+import com.example.hrms.core.utilities.results.Result;
 
 @RestController
 @RequestMapping("/api/emailverification")
@@ -21,7 +22,7 @@ public class EmailVerificationController {
 	}
 	
 	@PostMapping("/emailvalidate")
-	public void validate(@RequestBody EmailVerification emailVerification) {
-		emailVerificationService.validate(emailVerification);
+	public Result validate(@RequestBody EmailVerification emailVerification) {
+		return emailVerificationService.validate(emailVerification);
 	}
 }
