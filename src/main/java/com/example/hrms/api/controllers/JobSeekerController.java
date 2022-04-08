@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.hrms.business.abstracts.JobSeekerService;
+import com.example.hrms.core.utilities.results.DataResult;
 import com.example.hrms.entities.concretes.JobSeeker;
 
 @RestController
@@ -48,4 +50,8 @@ public class JobSeekerController {
 	    jobSeekerService.signUp(jobSeeker);  
 	}
 	
+	@GetMapping("/getByJobSeekerNameAndUser")
+	public DataResult<List<JobSeeker>> getByJobSeekerNameAndUser(@RequestParam("jobSeekerName") String jobSeekerName, @RequestParam("userId") int userId){
+		return this.jobSeekerService.getByJobSeekerNameAndUser(jobSeekerName, userId);
+	}
 }

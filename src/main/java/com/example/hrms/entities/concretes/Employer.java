@@ -8,8 +8,15 @@ import javax.persistence.Table;
 
 import com.example.hrms.entities.abstracts.IEntity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
 @Entity
 @Table(name="employers")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Employer implements IEntity{
 	
 	@Id
@@ -22,41 +29,5 @@ public class Employer implements IEntity{
 	
 	@Column(name="website")
 	private String website;
-	
-	public Employer() {
-		
-	}
-	
-	public Employer(int employerId, String companyName, String website) {
-		super();
-		this.employerId = employerId;
-		this.companyName = companyName;
-		this.website = website;
-	}
-
-	public int getEmployerId() {
-		return employerId;
-	}
-
-	public void setEmployerId(int employerId) {
-		this.employerId = employerId;
-	}
-
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-
-	public String getWebsite() {
-		return website;
-	}
-
-	public void setWebsite(String website) {
-		this.website = website;
-	}
-	
 	
 }

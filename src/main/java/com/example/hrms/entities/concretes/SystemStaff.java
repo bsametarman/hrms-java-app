@@ -10,8 +10,15 @@ import javax.persistence.Table;
 
 import com.example.hrms.entities.abstracts.IEntity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
 @Entity
 @Table(name="system_staffs")
+@AllArgsConstructor
+@NoArgsConstructor
 public class SystemStaff implements IEntity{
 	
 	@Id
@@ -36,78 +43,6 @@ public class SystemStaff implements IEntity{
 	
 	@Column(name="job_start_date")
 	private Date jobStartDate;
-	
-	public SystemStaff() {
-		
-	}
-
-	public SystemStaff(int systemStaffId, String name, String lastName, String identityNumber, Date birthDate,
-			String address, Date jobStartDate) {
-		super();
-		this.systemStaffId = systemStaffId;
-		this.name = name;
-		this.lastName = lastName;
-		this.identityNumber = identityNumber;
-		this.birthDate = birthDate;
-		this.address = address;
-		this.jobStartDate = jobStartDate;
-	}
-
-	public int getSystemStaffId() {
-		return systemStaffId;
-	}
-
-	public void setSystemStaffId(int systemStaffId) {
-		this.systemStaffId = systemStaffId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getIdentityNumber() {
-		return identityNumber;
-	}
-
-	public void setIdentityNumber(String identityNumber) {
-		this.identityNumber = identityNumber;
-	}
-
-	public Date getBirthDate() {
-		return birthDate;
-	}
-
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public Date getJobStartDate() {
-		return jobStartDate;
-	}
-
-	public void setJobStartDate(Date jobStartDate) {
-		this.jobStartDate = jobStartDate;
-	}
 	
 		
 }

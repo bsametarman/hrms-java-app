@@ -4,12 +4,21 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.example.hrms.entities.abstracts.IEntity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
 @Entity
 @Table(name="job_seekers")
+@AllArgsConstructor
+@NoArgsConstructor
 public class JobSeeker implements IEntity{
 	
 	@Id
@@ -18,83 +27,23 @@ public class JobSeeker implements IEntity{
 	private int jobSeekerId;
 	
 	@Column(name="first_name")
-	private String name;
+	private String jobSeekerName;
 	
 	@Column(name="last_name")
-	private String lastName;
+	private String jobSeekerLastName;
 	
 	@Column(name="identity_number")
-	private String identityNumber;
+	private String jobSeekerIdentityNumber;
 	
 	@Column(name="birth_date")
-	private String birthDate;
+	private String jobSeekerBirthDate;
 	
 	@Column(name="address")
-	private String address;
+	private String jobSeekerAddress;
 	
-	public JobSeeker()
-	{
-		
-	}
-	
-	public JobSeeker(int jobSeekerId, String name, String lastName, String identityNumber, String birthDate,
-			String email, String password, String passwordRepeat, String address) {
-		super();
-		this.jobSeekerId = jobSeekerId;
-		this.name = name;
-		this.lastName = lastName;
-		this.identityNumber = identityNumber;
-		this.birthDate = birthDate;
-		this.address = address;
-	}
-
-	public int getJobSeekerId() {
-		return jobSeekerId;
-	}
-
-	public void setJobSeekerId(int jobSeekerId) {
-		this.jobSeekerId = jobSeekerId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getIdentityNumber() {
-		return identityNumber;
-	}
-
-	public void setIdentityNumber(String identityNumber) {
-		this.identityNumber = identityNumber;
-	}
-
-	public String getBirthDate() {
-		return birthDate;
-	}
-
-	public void setBirthDate(String birthDate) {
-		this.birthDate = birthDate;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	
 }

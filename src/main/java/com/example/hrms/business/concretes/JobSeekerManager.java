@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.hrms.business.abstracts.JobSeekerService;
+import com.example.hrms.core.mernisVerification.abstracts.MernisVerificationService;
+import com.example.hrms.core.utilities.results.DataResult;
+import com.example.hrms.core.utilities.results.SuccessDataResult;
 import com.example.hrms.dataAccess.abstracts.JobSeekerDao;
 import com.example.hrms.entities.concretes.JobSeeker;
 
@@ -14,11 +17,13 @@ import com.example.hrms.entities.concretes.JobSeeker;
 public class JobSeekerManager implements JobSeekerService{
 	
 	private JobSeekerDao jobSeekerDao;
+	private MernisVerificationService mernisVerificationService;
 	
 	@Autowired
-	public JobSeekerManager(JobSeekerDao jobSeekerDao) {
+	public JobSeekerManager(JobSeekerDao jobSeekerDao, MernisVerificationService mernisVerificationService) {
 		super();
 		this.jobSeekerDao = jobSeekerDao;
+		this.mernisVerificationService = mernisVerificationService;
 	}
 	
 	@Override
@@ -33,16 +38,15 @@ public class JobSeekerManager implements JobSeekerService{
 
 	@Override
 	public void signUp(JobSeeker jobSeeker) {
-		JobSeeker jobSeekerCreate = new JobSeeker();
-		jobSeekerCreate.setJobSeekerId(jobSeeker.getJobSeekerId());
-		jobSeekerCreate.setName(jobSeeker.getName());
-		jobSeekerCreate.setLastName(jobSeeker.getLastName());
-		jobSeekerCreate.setIdentityNumber(jobSeeker.getIdentityNumber());
-		jobSeekerCreate.setBirthDate(jobSeeker.getBirthDate());
-		jobSeekerCreate.setAddress(jobSeeker.getAddress());
+		//mernisVerificationService.validate(jobSeeker);
 	
-		jobSeekerDao.saveAndFlush(jobSeekerCreate);
+		jobSeekerDao.saveAndFlush(jobSeeker);
 		
+	}
+
+	@Override
+	public DataResult<List<JobSeeker>> getByJobSeekerNameAndUser(String jobSeekerName, int userId) {
+		return new SuccessDataResult<List<JobSeeker>>(this.jobSeekerDao.getByJobSeekerNameAndUser_UserId(jobSeekerName, userId), "Data listelendi!");
 	}
 
 }
