@@ -1,4 +1,4 @@
-package com.example.hrms.core.systemVerification.entities;
+package com.example.hrms.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,19 +12,17 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name="hrms_verifications")
+@Table(name="job_positions")
 @AllArgsConstructor
 @NoArgsConstructor
-public class SystemVerification {
+public class JobPosition {
+	
 	@Id
 	@GeneratedValue
-	@Column(name="system_verification_id")
+	@Column(name="job_position_id")
 	private int id;
 	
-	@Column(name="employer_id")
-	private int employerId;
-	
-	@Column(name="systemVerification")
-	private boolean verification;
+	@Column(name="job_position")
+	private String job_position;
 	
 }

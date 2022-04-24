@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.hrms.business.abstracts.JobSeekerService;
-import com.example.hrms.core.mernisVerification.abstracts.MernisVerificationService;
 import com.example.hrms.core.utilities.results.DataResult;
 import com.example.hrms.core.utilities.results.SuccessDataResult;
 import com.example.hrms.dataAccess.abstracts.JobSeekerDao;
@@ -17,18 +16,16 @@ import com.example.hrms.entities.concretes.JobSeeker;
 public class JobSeekerManager implements JobSeekerService{
 	
 	private JobSeekerDao jobSeekerDao;
-	private MernisVerificationService mernisVerificationService;
 	
 	@Autowired
-	public JobSeekerManager(JobSeekerDao jobSeekerDao, MernisVerificationService mernisVerificationService) {
+	public JobSeekerManager(JobSeekerDao jobSeekerDao) {
 		super();
 		this.jobSeekerDao = jobSeekerDao;
-		this.mernisVerificationService = mernisVerificationService;
 	}
 	
 	@Override
-	public List<JobSeeker> getAll() {
-		return jobSeekerDao.findAll();
+	public DataResult<List<JobSeeker>> getAll() {
+		return new SuccessDataResult<List<JobSeeker>>(jobSeekerDao.findAll(),"İş arayanlar listelendi!");
 	}
 
 	@Override
@@ -37,10 +34,8 @@ public class JobSeekerManager implements JobSeekerService{
 	}
 
 	@Override
-	public void signUp(JobSeeker jobSeeker) {
-		//mernisVerificationService.validate(jobSeeker);
-	
-		jobSeekerDao.saveAndFlush(jobSeeker);
+	public DataResult<JobSeeker> signUp(JobSeeker jobSeeker) {
+		return new SuccessDataResult<JobSeeker>(jobSeekerDao.save(jobSeeker), "Başarıyla kaydedildi!");
 		
 	}
 

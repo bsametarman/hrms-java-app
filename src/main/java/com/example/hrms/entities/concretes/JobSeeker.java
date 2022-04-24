@@ -1,13 +1,16 @@
 package com.example.hrms.entities.concretes;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.example.hrms.core.emailVerification.entities.EmailVerification;
+import com.example.hrms.core.mernisVerification.entities.MernisVerification;
 import com.example.hrms.entities.abstracts.IEntity;
 
 import lombok.AllArgsConstructor;
@@ -41,9 +44,17 @@ public class JobSeeker implements IEntity{
 	@Column(name="address")
 	private String jobSeekerAddress;
 	
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	private User user;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="mernis_verification_id")
+	private MernisVerification mernisVerification;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="email_verification_id")
+	private EmailVerification emailVerification;
 	
 	
 }

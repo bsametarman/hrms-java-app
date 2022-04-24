@@ -30,7 +30,7 @@ public class JobSeekerController {
 	}
 	
 	@GetMapping("/getall")
-	public @ResponseBody List<JobSeeker> getAll(){
+	public @ResponseBody DataResult<List<JobSeeker>> getAll(){
 		return this.jobSeekerService.getAll();
 	}
 	
@@ -39,15 +39,9 @@ public class JobSeekerController {
 		return jobSeekerService.getById(job_seeker_id);
 	}
 	
-//	@PostMapping("/signup/{jobSeekerId}/{name}/{lastName}/{identityNumber}/{birthDate}/{address}")
-//	public void signUp(@PathVariable int jobSeekerId, String name, String lastName, String identityNumber, String birthDate,
-//			String add) {
-//		jobSeekerService.signUp(jobSeekerId, name, lastName, identityNumber, birthDate, address);
-//	}
-	
 	@RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json")
-	public void signUp(@RequestBody JobSeeker jobSeeker) {
-	    jobSeekerService.signUp(jobSeeker);  
+	public DataResult<JobSeeker> signUp(@RequestBody JobSeeker jobSeeker) {
+	    return jobSeekerService.signUp(jobSeeker);  
 	}
 	
 	@GetMapping("/getByJobSeekerNameAndUser")

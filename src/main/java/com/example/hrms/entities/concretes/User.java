@@ -1,12 +1,12 @@
 package com.example.hrms.entities.concretes;
 
-import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.example.hrms.entities.abstracts.IEntity;
@@ -24,7 +24,7 @@ public class User implements IEntity{
 	
 	@Id
 	@GeneratedValue
-	@Column(name="id")
+	@Column(name="user_id")
 	private int userId;
 	
 	@Column(name="email")
@@ -39,8 +39,8 @@ public class User implements IEntity{
 	@Column(name="phone_number")
 	private String userPhoneNumber;
 	
-	//@OneToMany(mappedBy = "user")
-	//private List<JobSeeker> jobSeekers;
+	@OneToOne(mappedBy = "user")
+	private JobSeeker jobSeekers;
 	
 
 }

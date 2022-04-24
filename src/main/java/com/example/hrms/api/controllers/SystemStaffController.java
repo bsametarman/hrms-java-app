@@ -1,15 +1,18 @@
 package com.example.hrms.api.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.hrms.business.abstracts.SystemStaffService;
+import com.example.hrms.core.utilities.results.DataResult;
+import com.example.hrms.entities.concretes.JobPosition;
 import com.example.hrms.entities.concretes.SystemStaff;
 
 @RestController
@@ -25,12 +28,32 @@ public class SystemStaffController {
 	}
 	
 	@GetMapping("/getall")
-	public List<SystemStaff> getAll(){
+	public DataResult<List<SystemStaff>> getAll(){
 		return systemStaffService.getAll();
 	}
 	
 	@GetMapping("/getbyid/{system_staff_id}")
-	public Optional<SystemStaff> getById(@PathVariable int system_staff_id){
-		return systemStaffService.getById(system_staff_id);
+	public DataResult<SystemStaff> getById(@PathVariable int systemStaffId){
+		return systemStaffService.getById(systemStaffId);
 	}
+	
+	@GetMapping("/getjobpositions")
+	public DataResult<List<JobPosition>> getJobPositions(){
+		return systemStaffService.getAllJobPositions();
+	}
+	
+	@GetMapping("/getjobpositionbyid/{job_position_id}")
+	public DataResult<JobPosition> getJobPositionById(@RequestParam("jobPositionId") int jobPositionId){
+		return systemStaffService.getJobPositionById(jobPositionId);
+	}
+	
+	@RequestMapping(value = "/addjobposition", method = RequestMethod.POST, produces = "application/json")
+	public DataResult<JobPosition> addJobPosition(JobPosition jobPosition){
+		return systemStaffService.addJobPosition(jobPosition);
+	}
+	
+	
+	
+	
+	
 }

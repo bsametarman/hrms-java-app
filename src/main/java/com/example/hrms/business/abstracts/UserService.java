@@ -6,4 +6,5 @@ import com.example.hrms.entities.concretes.User;
 
 public interface UserService {
 	public List<User> getAll();
+	public void signUp(User user);
 }
