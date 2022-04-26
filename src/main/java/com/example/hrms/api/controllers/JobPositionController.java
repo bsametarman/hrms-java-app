@@ -3,6 +3,7 @@ package com.example.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,8 +28,8 @@ public class JobPositionController {
 		return jobPositionService.getAll();
 	}
 	
-	@GetMapping("/getjobpositionbyid/{job_position_id}")
-	public DataResult<JobPosition> getJobPositionById(@RequestParam("id") int jobPositionId){
+	@GetMapping("/getjobpositionbyid/{jobPositionId}")
+	public DataResult<JobPosition> getJobPositionById(@RequestParam("jobPositionId") int jobPositionId){
 		return jobPositionService.getById(jobPositionId);
 	}
 	

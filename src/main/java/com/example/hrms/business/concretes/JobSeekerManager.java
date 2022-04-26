@@ -29,7 +29,7 @@ public class JobSeekerManager implements JobSeekerService{
 
 	@Override
 	public DataResult<JobSeeker> getById(int jobSeekerId) {
-		return new SuccessDataResult<JobSeeker>(jobSeekerDao.getJobSeekerById(jobSeekerId), "İş arayan listelendi!");
+		return new SuccessDataResult<JobSeeker>(jobSeekerDao.getJobSeekerByJobSeekerId(jobSeekerId), "İş arayan listelendi!");
 	}
 
 	@Override

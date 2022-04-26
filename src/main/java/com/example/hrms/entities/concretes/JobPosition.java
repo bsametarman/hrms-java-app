@@ -20,7 +20,7 @@ public class JobPosition {
 	@Id
 	@GeneratedValue
 	@Column(name="job_position_id")
-	private int id;
+	private int jobPositionId;
 	
 	@Column(name="job_position")
 	private String job_position;

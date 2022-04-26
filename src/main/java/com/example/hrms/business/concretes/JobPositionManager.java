@@ -28,7 +28,7 @@ public class JobPositionManager implements JobPositionService {
 
 	@Override
 	public DataResult<JobPosition> getById(int jobPositionId) {
-		return new SuccessDataResult<JobPosition>(jobPositionDao.getJobPositionById(jobPositionId), "İş pozisyonu listelendi!");
+		return new SuccessDataResult<JobPosition>(jobPositionDao.getJobPositionByJobPositionId(jobPositionId), "İş pozisyonu listelendi!");
 	}
 	
 }

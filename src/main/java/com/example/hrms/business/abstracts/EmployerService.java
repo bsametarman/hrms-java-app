@@ -7,6 +7,6 @@ import com.example.hrms.entities.concretes.Employer;
 
 public interface EmployerService {
 	DataResult<List<Employer>> getAll();
-	DataResult<Employer> getById(int employer_id);
+	DataResult<Employer> getById(int employerId);
 	DataResult<Employer> add(Employer employer);
 }

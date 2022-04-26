@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.hrms.business.abstracts.SystemStaffService;
@@ -33,7 +34,7 @@ public class SystemStaffController {
 	}
 	
 	@GetMapping("/getbyid/{system_staff_id}")
-	public DataResult<SystemStaff> getById(@PathVariable int systemStaffId){
+	public DataResult<SystemStaff> getById(@RequestParam("systemStaffId") int systemStaffId){
 		return systemStaffService.getById(systemStaffId);
 	}
 	

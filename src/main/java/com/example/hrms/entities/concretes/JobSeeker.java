@@ -27,7 +27,7 @@ public class JobSeeker implements IEntity{
 	@Id
 	@GeneratedValue
 	@Column(name="job_seeker_id")
-	private int id;
+	private int jobSeekerId;
 	
 	@Column(name="first_name")
 	private String jobSeekerName;
