@@ -1,11 +1,9 @@
 package com.example.hrms.api.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,8 +33,8 @@ public class JobSeekerController {
 	}
 	
 	@GetMapping("/getbyid/{job_seeker_id}")
-	public Optional<JobSeeker> getById(@PathVariable int job_seeker_id){
-		return jobSeekerService.getById(job_seeker_id);
+	public DataResult<JobSeeker> getById(@RequestParam("jobSeekerId") int jobSeekerId){
+		return jobSeekerService.getById(jobSeekerId);
 	}
 	
 	@PostMapping("/add")
