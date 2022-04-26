@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.hrms.business.abstracts.SystemStaffService;
@@ -37,18 +37,8 @@ public class SystemStaffController {
 		return systemStaffService.getById(systemStaffId);
 	}
 	
-	@GetMapping("/getjobpositions")
-	public DataResult<List<JobPosition>> getJobPositions(){
-		return systemStaffService.getAllJobPositions();
-	}
-	
-	@GetMapping("/getjobpositionbyid/{job_position_id}")
-	public DataResult<JobPosition> getJobPositionById(@RequestParam("jobPositionId") int jobPositionId){
-		return systemStaffService.getJobPositionById(jobPositionId);
-	}
-	
-	@RequestMapping(value = "/addjobposition", method = RequestMethod.POST, produces = "application/json")
-	public DataResult<JobPosition> addJobPosition(JobPosition jobPosition){
+	@PostMapping(value = "/addjobposition")
+	public DataResult<JobPosition> addJobPosition(@RequestBody JobPosition jobPosition){
 		return systemStaffService.addJobPosition(jobPosition);
 	}
 	

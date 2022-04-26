@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.hrms.entities.concretes.Employer;
 
 public interface EmployerDao extends JpaRepository<Employer, Integer>{
-
+	public Employer getEmployerByEmployerId(int employerId);
 }
