@@ -2,10 +2,13 @@ package com.example.hrms.entities.concretes;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.example.hrms.entities.abstracts.IEntity;
@@ -43,6 +46,10 @@ public class SystemStaff implements IEntity{
 	
 	@Column(name="job_start_date")
 	private Date jobStartDate;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="user_id")
+	private User user;
 	
 		
 }

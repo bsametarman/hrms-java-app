@@ -42,6 +42,11 @@ public class SystemStaffController {
 		return systemStaffService.addJobPosition(jobPosition);
 	}
 	
+	@PostMapping(value="/addsystemstaff")
+	public DataResult<SystemStaff> add(@RequestBody SystemStaff systemStaff){
+		return systemStaffService.add(systemStaff);
+	}
+	
 	
 	
 	

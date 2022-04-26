@@ -35,7 +35,7 @@ public class SystemStaffManager implements SystemStaffService{
 
 	@Override
 	public DataResult<SystemStaff> getById(int systemStaffId) {
-		return new SuccessDataResult<SystemStaff>(systemStaffDao.getById(systemStaffId),"Sistem yetkilileri listelendi!");
+		return new SuccessDataResult<SystemStaff>(systemStaffDao.getSystemStaffBySystemStaffId(systemStaffId),"Sistem yetkilileri listelendi!");
 	}
 
 	@Override
@@ -46,6 +46,11 @@ public class SystemStaffManager implements SystemStaffService{
 		catch(Exception e) {
 			return new ErrorDataResult<JobPosition>("Bu pozisyon zaten mevcut.");
 		}
+	}
+
+	@Override
+	public DataResult<SystemStaff> add(SystemStaff systemStaff) {
+		return new SuccessDataResult<SystemStaff>(systemStaffDao.save(systemStaff), "Sistem personeli eklendi!");
 	}
 
 }

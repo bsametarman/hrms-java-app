@@ -10,4 +10,5 @@ public interface SystemStaffService {
 	DataResult<List<SystemStaff>> getAll();
 	DataResult<SystemStaff> getById(int systemStaffId);
 	DataResult<JobPosition> addJobPosition(JobPosition jobPosition);
+	DataResult<SystemStaff> add(SystemStaff systemStaff);
 }
