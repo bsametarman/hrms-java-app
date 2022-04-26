@@ -7,7 +7,7 @@ import com.example.hrms.core.utilities.results.DataResult;
 import com.example.hrms.entities.concretes.JobSeeker;
 
 public interface JobSeekerService {
-	DataResult<List<JobSeeker>> getAll();
+	List<JobSeeker> getAll();
 	Optional<JobSeeker> getById(int job_seeker_id);
 	DataResult<JobSeeker> signUp(JobSeeker jobSeeker);
 	DataResult<List<JobSeeker>> getByJobSeekerNameAndUser(String jobSeekerName, int userId);

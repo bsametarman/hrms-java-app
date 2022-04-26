@@ -5,10 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.example.hrms.entities.concretes.JobSeeker;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,9 +26,5 @@ public class EmailVerification {
 	
 	@Column(name="verification")
 	private boolean verification;
-	
-	@OneToOne(mappedBy = "emailVerification")
-	private JobSeeker jobSeeker;
-	
 	
 }

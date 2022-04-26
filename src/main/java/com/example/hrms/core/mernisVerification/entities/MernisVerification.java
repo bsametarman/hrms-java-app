@@ -4,10 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.example.hrms.entities.concretes.JobSeeker;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,9 +23,5 @@ public class MernisVerification {
 	
 	@Column(name="verification")
 	private boolean verification;
-	
-	@OneToOne(mappedBy = "mernisVerification")
-	private JobSeeker jobSeeker;
-	
 	
 }
