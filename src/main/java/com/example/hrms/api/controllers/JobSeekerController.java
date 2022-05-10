@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.hrms.business.abstracts.JobAdvertisementService;
 import com.example.hrms.business.abstracts.JobSeekerService;
 import com.example.hrms.core.utilities.results.DataResult;
+import com.example.hrms.entities.concretes.JobAdvertisement;
 import com.example.hrms.entities.concretes.JobSeeker;
 
 @RestController
@@ -20,11 +22,13 @@ import com.example.hrms.entities.concretes.JobSeeker;
 public class JobSeekerController {
 	
 	private JobSeekerService jobSeekerService;
+	private JobAdvertisementService jobAdvertisementService;
 	
 	@Autowired
-	public JobSeekerController(JobSeekerService jobSeekerService) {
+	public JobSeekerController(JobSeekerService jobSeekerService, JobAdvertisementService jobAdvertisementService) {
 		super();
 		this.jobSeekerService = jobSeekerService;
+		this.jobAdvertisementService = jobAdvertisementService;
 	}
 	
 	@GetMapping("/getall")
@@ -45,5 +49,10 @@ public class JobSeekerController {
 	@GetMapping("/getByJobSeekerNameAndUser")
 	public DataResult<List<JobSeeker>> getByJobSeekerNameAndUser(@RequestParam("jobSeekerName") String jobSeekerName, @RequestParam("userId") int userId){
 		return this.jobSeekerService.getByJobSeekerNameAndUser(jobSeekerName, userId);
+	}
+	
+	@GetMapping("/getAllActiveJobAdvertisements")
+	public DataResult<List<JobAdvertisement>> getAllActiveJobAdvertisements(){
+		return this.jobAdvertisementService.getAllActiveJobAdvertisements();
 	}
 }
