@@ -31,6 +31,5 @@ public class ResumesController {
 	@PostMapping("/add")
 	public DataResult<Resume> add(@RequestBody Resume resume) {
 		return this.resumeService.add(resume);
-		
 	}
 }
