@@ -1,9 +1,12 @@
 package com.example.hrms.entities.concretes;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.example.hrms.entities.abstracts.IEntity;
@@ -45,8 +48,7 @@ public class Resume implements IEntity{
 	@Column(name="employee_profile_image")
 	private String employeeProfileImage;
 	
-	
-	
-	
-	
+	@OneToMany(cascade=CascadeType.MERGE)
+	@JoinColumn(name="resume_id")
+	private Language language;
 }
