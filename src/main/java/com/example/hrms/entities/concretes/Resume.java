@@ -51,18 +51,18 @@ public class Resume implements IEntity{
 	private String employeeProfileImage;
 	
 	@OneToMany(cascade=CascadeType.MERGE)
-	@JoinColumn(name="resume_id")
+	@JoinColumn(name="language_id")
 	private List<Language> languages;
 	
 	@OneToMany(cascade=CascadeType.MERGE)
-	@JoinColumn(name="resume_id")
+	@JoinColumn(name="school_information_id")
 	private List<SchoolInformation> schoolInformantions;
 	
 	@OneToMany(cascade=CascadeType.MERGE)
-	@JoinColumn(name="resume_id")
+	@JoinColumn(name="job_experience_id")
 	private List<JobExperience> jobExperiences;
 	
 	@OneToMany(cascade=CascadeType.MERGE)
-	@JoinColumn(name="resume_id")
+	@JoinColumn(name="competence_id")
 	private List<Competence> competencies;
 }
