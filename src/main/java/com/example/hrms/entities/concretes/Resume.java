@@ -1,5 +1,7 @@
 package com.example.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -50,5 +52,9 @@ public class Resume implements IEntity{
 	
 	@OneToMany(cascade=CascadeType.MERGE)
 	@JoinColumn(name="resume_id")
-	private Language language;
+	private List<Language> language;
+	
+	@OneToMany(cascade=CascadeType.MERGE)
+	@JoinColumn(name="resume_id")
+	private List<SchoolInformation> schoolInformantion;
 }
