@@ -57,4 +57,8 @@ public class Resume implements IEntity{
 	@OneToMany(cascade=CascadeType.MERGE)
 	@JoinColumn(name="resume_id")
 	private List<SchoolInformation> schoolInformantion;
+	
+	@OneToMany(cascade=CascadeType.MERGE)
+	@JoinColumn(name="resume_id")
+	private List<JobExperience> jobExperience;
 }
