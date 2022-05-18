@@ -52,6 +52,15 @@ public class Resume implements IEntity{
 	@Column(name="employee_profile_image")
 	private String employeeProfileImage;
 	
+	@Column(name="github")
+	private String github;
+	
+	@Column(name="linkedin")
+	private String linkedin;
+	
+	@Column(name="introduction")
+	private String introduction;
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "resume_id", referencedColumnName = "resume_id")
 	private List<Language> languages;
