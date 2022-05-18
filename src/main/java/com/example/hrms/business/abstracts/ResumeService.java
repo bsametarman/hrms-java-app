@@ -8,5 +8,5 @@ import com.example.hrms.entities.concretes.Resume;
 public interface ResumeService {
 	DataResult<List<Resume>> getAll();
 	DataResult<Resume> add(Resume resume);
-	
+	DataResult<List<Resume>> getAllResumesWithJobSeekerId(int jobSeekerId);
 }

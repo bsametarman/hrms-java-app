@@ -32,4 +32,9 @@ public class ResumeManager implements ResumeService{
 		return new SuccessDataResult<Resume>(this.resumeDao.save(resume), "CV eklendi!");
 	}
 
+	@Override
+	public DataResult<List<Resume>> getAllResumesWithJobSeekerId(int jobSeekerId) {
+		return new SuccessDataResult<List<Resume>>(this.resumeDao.getResumeByJobSeekerId(jobSeekerId), "Tüm Cvler listelendi!");
+	}
+
 }
