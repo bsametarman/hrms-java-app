@@ -1,5 +1,7 @@
 package com.example.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.example.hrms.core.emailVerification.entities.EmailVerification;
@@ -55,6 +58,10 @@ public class JobSeeker implements IEntity{
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="email_verification_id")
 	private EmailVerification emailVerification;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="job_seeker_id", referencedColumnName="job_seeker_id")
+	private List<Resume> resumes;
 	
 	
 }
