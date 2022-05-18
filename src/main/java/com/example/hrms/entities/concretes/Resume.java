@@ -61,6 +61,9 @@ public class Resume implements IEntity{
 	@Column(name="introduction")
 	private String introduction;
 	
+	@Column(name="job_seeker_id")
+	private int jobSeekerId;
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "resume_id", referencedColumnName = "resume_id")
 	private List<Language> languages;
