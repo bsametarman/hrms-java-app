@@ -2,6 +2,7 @@ package com.example.hrms.business.concretes;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.hrms.business.abstracts.ResumeService;
@@ -15,6 +16,7 @@ public class ResumeManager implements ResumeService{
 	
 	private ResumeDao resumeDao;
 	
+	@Autowired
 	public ResumeManager(ResumeDao resumeDao) {
 		super();
 		this.resumeDao = resumeDao;

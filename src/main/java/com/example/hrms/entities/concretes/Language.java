@@ -12,11 +12,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
+@Entity
+@Table(name="languages")
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="languages")
 public class Language implements IEntity{
 	
 	@Id

@@ -3,6 +3,7 @@ package com.example.hrms.entities.concretes;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,15 +13,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
+@Entity
+@Table(name="competencies")
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="competencies")
 public class Competence implements IEntity{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="competence_id")
 	private int competenceId;
 	
@@ -28,5 +29,6 @@ public class Competence implements IEntity{
 	private String competenceName;
 	
 	@Column(name="competence_description")
-	private String competenceDescription;
+	private String competenceDescription;	
+
 }

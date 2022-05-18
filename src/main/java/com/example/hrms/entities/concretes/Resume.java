@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -17,15 +18,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
+@Entity
+@Table(name="resumes")
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="resumes")
+//@JsonIgnoreProperties({"hibernateLazyInitializer","handler","languages"})
 public class Resume implements IEntity{
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="resume_id")
 	private int resumeId;
 	
@@ -50,19 +52,19 @@ public class Resume implements IEntity{
 	@Column(name="employee_profile_image")
 	private String employeeProfileImage;
 	
-	@OneToMany(cascade=CascadeType.MERGE)
-	@JoinColumn(name="language_id")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "resume_id", referencedColumnName = "resume_id")
 	private List<Language> languages;
 	
-	@OneToMany(cascade=CascadeType.MERGE)
-	@JoinColumn(name="school_information_id")
-	private List<SchoolInformation> schoolInformantions;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "resume_id", referencedColumnName = "resume_id")
+	private List<SchoolInformation> schoolInformations;
 	
-	@OneToMany(cascade=CascadeType.MERGE)
-	@JoinColumn(name="job_experience_id")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "resume_id", referencedColumnName = "resume_id")
 	private List<JobExperience> jobExperiences;
 	
-	@OneToMany(cascade=CascadeType.MERGE)
-	@JoinColumn(name="competence_id")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "resume_id", referencedColumnName = "resume_id")
 	private List<Competence> competencies;
 }
