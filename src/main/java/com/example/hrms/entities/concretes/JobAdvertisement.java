@@ -44,6 +44,12 @@ public class JobAdvertisement {
 	@Column(name="job_advertisement_state")
 	private boolean jobAdvertisementState;
 	
+	@Column(name="job_type")
+	private String jobType;
+	
+	@Column(name="job_time_type")
+	private String jobTimeType;
+	
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="job_position_id")
 	private JobPosition jobPositionId;
