@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.hrms.business.abstracts.JobAdvertisementService;
 import com.example.hrms.business.abstracts.SystemStaffService;
 import com.example.hrms.core.utilities.results.DataResult;
+import com.example.hrms.dataAccess.abstracts.JobAdvertisementDao;
+import com.example.hrms.entities.concretes.JobAdvertisement;
 import com.example.hrms.entities.concretes.JobPosition;
 import com.example.hrms.entities.concretes.SystemStaff;
 
@@ -20,11 +23,13 @@ import com.example.hrms.entities.concretes.SystemStaff;
 public class SystemStaffController {
 
 	private SystemStaffService systemStaffService;
+	private JobAdvertisementService jobAdvertisementService;
 	
 	@Autowired
-	public SystemStaffController(SystemStaffService systemStaffService) {
+	public SystemStaffController(SystemStaffService systemStaffService, JobAdvertisementService jobAdvertisementService) {
 		super();
 		this.systemStaffService = systemStaffService;
+		this.jobAdvertisementService = jobAdvertisementService;
 	}
 	
 	@GetMapping("/getall")
@@ -45,6 +50,11 @@ public class SystemStaffController {
 	@PostMapping(value="/addsystemstaff")
 	public DataResult<SystemStaff> add(@RequestBody SystemStaff systemStaff){
 		return systemStaffService.add(systemStaff);
+	}
+	
+	@PostMapping(value="/approvejobadvert")
+	public DataResult<JobAdvertisement> approveJobAdvert(@RequestBody int jobAdvertisementId){
+		return jobAdvertisementService.updateJobAdvertisementState(jobAdvertisementId);
 	}
 	
 	

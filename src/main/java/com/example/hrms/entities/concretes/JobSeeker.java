@@ -63,5 +63,4 @@ public class JobSeeker implements IEntity{
 	@JoinColumn(name="job_seeker_id", referencedColumnName="job_seeker_id")
 	private List<Resume> resumes;
 	
-	
 }

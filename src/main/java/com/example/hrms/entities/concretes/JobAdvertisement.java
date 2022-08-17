@@ -44,7 +44,7 @@ public class JobAdvertisement {
 	@Column(name="job_advertisement_state")
 	private boolean jobAdvertisementState;
 	
-	@ManyToOne(cascade=CascadeType.MERGE)
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="job_position_id")
 	private JobPosition jobPositionId;
 	
